@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'http://nexus.xiaoc.cn/repository/maven-releases/'
+        }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
+        jcenter()
+        mavenCentral()
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+        google()
+    }
+    tasks.withType(Javadoc).all {
+        enabled = false
+    }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'//不使用缓存，使用仓库中最新的包
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

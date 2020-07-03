@@ -1,0 +1,1 @@
+include ':app', ':auth', ':auth_qq', ':auth_weixin', ':auth_weibo', ':auth_alipay', ':auth_unionpay'
